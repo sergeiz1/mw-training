@@ -1,0 +1,5 @@
+<ng-template cxOutletRef="Summary" cxOutletPos="before">
+  <ng-container *ngIf="(manufacturer$ | async) === 'Samsung'">
+    <h1 style="color: blue">Samsung is on Sale!</h1>
+  </ng-container>
+</ng-template>
