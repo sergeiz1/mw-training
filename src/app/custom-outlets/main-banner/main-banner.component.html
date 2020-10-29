@@ -1,0 +1,7 @@
+<ng-template cxOutletRef="Section1">
+  <div class="main-banner">
+    <a *ngIf="product$ | async as p" [href]="'product/'+ p.code + '/' + p.name">
+    <cx-media [container]="p.images.PRIMARY.zoom"></cx-media>
+    </a>
+  </div>
+</ng-template>

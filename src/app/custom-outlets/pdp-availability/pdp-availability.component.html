@@ -1,0 +1,11 @@
+<ng-template cxOutletRef="Summary" cxOutletPos="before">
+  <ng-container *ngIf="(availability$ | async) === true; else notAvailable">
+    <p class="available">Available for pickup</p>
+  </ng-container>
+</ng-template>
+
+<ng-template #notAvailable>
+  <ng-container>
+    <p class="not-available">Not available</p>
+  </ng-container>
+</ng-template>

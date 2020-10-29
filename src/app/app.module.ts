@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { translationChunksConfig, translations } from '@spartacus/assets';
-import { B2cStorefrontModule } from '@spartacus/storefront';
-import { AppComponent } from './app.component';
-import { MyOutletsModule } from './my-outlets/my-outlets.module';
-
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {translationChunksConfig, translations} from '@spartacus/assets';
+import {B2cStorefrontModule, CartPageLayoutHandler, LayoutConfig, PAGE_LAYOUT_HANDLER} from '@spartacus/storefront';
+import {AppComponent} from './app.component';
+import {CustomOutletsModule} from './custom-outlets/custom-outlets.module';
+import {ConfigModule} from '@spartacus/core';
+import {CustomLayoutModule} from "./custom-layout/custom-layout.module";
 
 @NgModule({
   declarations: [
@@ -31,11 +32,58 @@ import { MyOutletsModule } from './my-outlets/my-outlets.module';
       },
       features: {
         level: '3.0'
-      }
+      },
     }),
-    MyOutletsModule
+    ConfigModule.withConfig({
+      layoutSlots: {
+        header: {
+          slots: [
+            'MiniCart'
+          ]
+        },
+        ProductDetailsPageTemplate: {
+          slots: [
+            'Summary', 'UpSelling', 'CrossSelling', 'SiteLinks', 'PlaceholderContentSlot'
+          ]
+        },
+        SearchResultsListPageTemplate: {
+          slots: [
+            'Section2', 'ProductLeftRefinements', 'SearchResultsListSlot'
+          ],
+          lg: {
+            slots: [
+              'Section2', 'ProductLeftRefinements', 'SearchResultsListSlot'
+            ]
+          },
+          md: {
+            slots: [
+              'Section2', 'ProductLeftRefinements', 'SearchResultsListSlot'
+            ]
+          },
+          sm: {
+            slots: [
+              'ProductLeftRefinements', 'SearchResultsListSlot'
+            ]
+          },
+          xs: {
+            slots: [
+              'ProductLeftRefinements', 'SearchResultsListSlot'
+            ]
+          }
+        }
+      }
+    } as LayoutConfig),
+    CustomOutletsModule,
+    CustomLayoutModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: PAGE_LAYOUT_HANDLER,
+      useExisting: CartPageLayoutHandler,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
