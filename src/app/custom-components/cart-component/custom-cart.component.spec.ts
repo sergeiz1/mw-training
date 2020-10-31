@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomLayoutComponent } from './custom-layout.component';
+import { CustomCartComponent } from './custom-cart.component';
 
-describe('CustomLayoutComponent', () => {
-  let component: CustomLayoutComponent;
-  let fixture: ComponentFixture<CustomLayoutComponent>;
+describe('CartComponentComponent', () => {
+  let component: CustomCartComponent;
+  let fixture: ComponentFixture<CustomCartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CustomLayoutComponent ]
+      declarations: [ CustomCartComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CustomLayoutComponent);
+    fixture = TestBed.createComponent(CustomCartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

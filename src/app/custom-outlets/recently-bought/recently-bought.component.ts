@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {RecentlyBoughtService} from "../../services/recently-bought.service";
+import {RecentlyBoughtService} from '../../services/recently-bought.service';
 
 @Component({
   selector: 'app-recently-bought',

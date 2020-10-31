@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Product, ProductService} from '@spartacus/core';
-import {Observable} from "rxjs";
-import {map, switchMap} from "rxjs/operators";
-import {product} from "@spartacus/assets/translations/en/product";
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-main-banner',
@@ -22,7 +20,7 @@ export class MainBannerComponent implements OnInit {
     }, 2000);
   }
 
-  randomShowProduct(random) {
+  randomShowProduct(random): void {
     this.product$ = this.productService.get(this.listOfProducts[random]);
   }
 }

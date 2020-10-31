@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {CurrentProductService} from "@spartacus/storefront";
-import {ActiveCartService} from "@spartacus/core";
-import {map, switchMap} from "rxjs/operators";
+import {CurrentProductService} from '@spartacus/storefront';
+import {ActiveCartService} from '@spartacus/core';
+import {map, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-current-cart-items',

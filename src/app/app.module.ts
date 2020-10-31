@@ -5,7 +5,8 @@ import {B2cStorefrontModule, CartPageLayoutHandler, LayoutConfig, PAGE_LAYOUT_HA
 import {AppComponent} from './app.component';
 import {CustomOutletsModule} from './custom-outlets/custom-outlets.module';
 import {ConfigModule} from '@spartacus/core';
-import {CustomLayoutModule} from "./custom-layout/custom-layout.module";
+import {CustomComponentsModule} from './custom-components/custom-components.module';
+import {MiniCartLayoutHandler} from './mini-cart-layout-handler';
 
 @NgModule({
   declarations: [
@@ -36,11 +37,6 @@ import {CustomLayoutModule} from "./custom-layout/custom-layout.module";
     }),
     ConfigModule.withConfig({
       layoutSlots: {
-        header: {
-          slots: [
-            'MiniCart'
-          ]
-        },
         ProductDetailsPageTemplate: {
           slots: [
             'Summary', 'UpSelling', 'CrossSelling', 'SiteLinks', 'PlaceholderContentSlot'
@@ -74,12 +70,12 @@ import {CustomLayoutModule} from "./custom-layout/custom-layout.module";
       }
     } as LayoutConfig),
     CustomOutletsModule,
-    CustomLayoutModule
+    CustomComponentsModule
   ],
   providers: [
     {
       provide: PAGE_LAYOUT_HANDLER,
-      useExisting: CartPageLayoutHandler,
+      useExisting: MiniCartLayoutHandler,
       multi: true
     }
   ],
