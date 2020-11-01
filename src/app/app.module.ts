@@ -1,19 +1,20 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-browser';
 import {translationChunksConfig, translations} from '@spartacus/assets';
-import {B2cStorefrontModule, LayoutConfig, PAGE_LAYOUT_HANDLER} from '@spartacus/storefront';
+import {B2cStorefrontModule, LayoutConfig, PAGE_LAYOUT_HANDLER, PageComponentModule} from '@spartacus/storefront';
 import {AppComponent} from './app.component';
 import {CustomOutletsModule} from './custom-outlets/custom-outlets.module';
-import {ConfigModule} from '@spartacus/core';
+import {ConfigModule, RoutingConfig} from '@spartacus/core';
 import {CustomComponentsModule} from './custom-components/custom-components.module';
 import {MiniCartLayoutHandler} from './mini-cart-layout-handler';
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     B2cStorefrontModule.withConfig({
       backend: {
         occ: {
@@ -69,8 +70,27 @@ import {MiniCartLayoutHandler} from './mini-cart-layout-handler';
         }
       }
     } as LayoutConfig),
+    ConfigModule.withConfig({
+      routing: {
+        routes: {
+          product: {
+            paths: [
+              'product/:manufacturer/:firstCategoryName/:productCode/:prettyName',
+              'product/:manufacturer/:productCode/:prettyName',
+              'product/:productCode/:name'
+            ],
+            paramsMapping: {
+              name: ''
+            }
+          }
+        }
+      }
+    } as RoutingConfig),
     CustomOutletsModule,
-    CustomComponentsModule
+    CustomComponentsModule,
+    PageComponentModule,
+    CommonModule,
+    BrowserTransferStateModule
   ],
   providers: [
     {
