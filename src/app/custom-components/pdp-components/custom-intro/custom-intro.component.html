@@ -1,0 +1,6 @@
+<ng-container *ngIf="currentProduct$ | async as product">
+  <div class="product-code">Product ID: {{product.code}}</div>
+  <cx-star-rating [disabled]="true" [rating]="product.averageRating"></cx-star-rating>
+  ({{product.numberOfReviews}})
+  <div class="price">{{product.price.formattedValue}}</div>
+</ng-container>

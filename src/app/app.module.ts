@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {translationChunksConfig, translations} from '@spartacus/assets';
-import {B2cStorefrontModule, CartPageLayoutHandler, LayoutConfig, PAGE_LAYOUT_HANDLER} from '@spartacus/storefront';
+import {B2cStorefrontModule, LayoutConfig, PAGE_LAYOUT_HANDLER} from '@spartacus/storefront';
 import {AppComponent} from './app.component';
 import {CustomOutletsModule} from './custom-outlets/custom-outlets.module';
 import {ConfigModule} from '@spartacus/core';

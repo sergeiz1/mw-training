@@ -3,12 +3,10 @@ import {CommonModule} from '@angular/common';
 import {CustomCartComponent} from './custom-cart.component';
 import {CmsConfig, ConfigModule, I18nModule} from '@spartacus/core';
 import {
-  CartDetailsModule, ItemCounterModule,
+  CartDetailsModule,
   MediaModule,
-  PageComponentModule,
-  PromotionsModule
+  PageComponentModule
 } from '@spartacus/storefront';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -28,11 +26,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     } as CmsConfig),
     I18nModule,
     CartDetailsModule,
-    MediaModule,
-    PromotionsModule,
-    ItemCounterModule,
-    FormsModule,
-    ReactiveFormsModule
+    MediaModule
   ]
 })
 export class CustomCartModule {

@@ -23,7 +23,7 @@
         <td>{{entry.basePrice.formattedValue}}</td>
         <td>
           <input type="number" [min]="1" [value]="entry.quantity"
-                 (input)="changeQuantity(entry, quantity.value)" (change)="onChange($event)" #quantity>
+                 (input)="changeQuantity(entry, quantity.value)" #quantity>
         </td>
         <td>{{entry.totalPrice.formattedValue}}</td>
         <td>

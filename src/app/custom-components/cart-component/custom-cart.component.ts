@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {
-  CartDetailsComponent,
-  CmsComponentData, PromotionService,
+  CartDetailsComponent, PromotionService,
 } from '@spartacus/storefront';
 import {
   ActiveCartService, AuthService, OrderEntry, RoutingService,
@@ -17,8 +16,7 @@ export class CustomCartComponent extends CartDetailsComponent {
 
   cart$ = this.activeCartService.getActive();
 
-  constructor(public component: CmsComponentData<any>,
-              protected activeCartService: ActiveCartService,
+  constructor(protected activeCartService: ActiveCartService,
               protected selectiveCartService: SelectiveCartService,
               protected promotionService: PromotionService,
               protected authService: AuthService,
@@ -28,10 +26,6 @@ export class CustomCartComponent extends CartDetailsComponent {
 
   changeQuantity(entry: OrderEntry, quantity: string): void {
       this.activeCartService.updateEntry(entry.entryNumber, +quantity);
-  }
-
-  onChange(event: Event) {
-    console.log(event);
   }
 
   removeEntry(entry: OrderEntry): void {
