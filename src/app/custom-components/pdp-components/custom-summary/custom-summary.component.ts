@@ -1,5 +1,7 @@
 import { Component} from '@angular/core';
 import {CurrentProductService, ProductSummaryComponent} from '@spartacus/storefront';
+import {map, switchMap} from "rxjs/operators";
+import {ActiveCartService} from "@spartacus/core";
 
 @Component({
   selector: 'app-pdp',
@@ -10,7 +12,14 @@ export class CustomSummaryComponent extends ProductSummaryComponent {
 
   currentProduct$ = this.currentProductService.getProduct();
 
-  constructor(protected currentProductService: CurrentProductService) {
+  currentProductQtyInCart$ = this.currentProductService.getProduct().pipe(
+    map(product => product.code),
+    switchMap(code => this.activeCartService.getEntry(code)),
+    map(entry => entry ? entry.quantity : 0)
+  );
+
+  constructor(protected currentProductService: CurrentProductService,
+              protected activeCartService: ActiveCartService) {
     super(currentProductService);
   }
 

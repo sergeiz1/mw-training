@@ -16,7 +16,8 @@ import {StarRatingModule} from '@spartacus/storefront';
           component: CustomIntroComponent
         },
         ProductSummaryComponent: {
-          component: CustomSummaryComponent
+          component: CustomSummaryComponent,
+          disableSSR: true
         }
       }
     } as CmsConfig),

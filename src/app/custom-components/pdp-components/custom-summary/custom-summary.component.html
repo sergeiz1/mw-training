@@ -1,4 +1,7 @@
 <ng-container *ngIf="currentProduct$ | async as product">
+  <ng-container *ngIf="currentProductQtyInCart$ | async as quantity">
+    <div class="quantity">{{quantity}} item(s) already in cart</div>
+  </ng-container>
   <div class="card">
     <div class="description" [innerHTML]="product.description"></div>
   </div>

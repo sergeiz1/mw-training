@@ -11,11 +11,11 @@ export class CustomIntroComponent extends ProductIntroComponent {
 
   currentProduct$ = this.currentProductService.getProduct();
 
-  constructor(
+  /* constructor(
     protected currentProductService: CurrentProductService,
     translationService: TranslationService,
     protected winRef: WindowRef) {
     super(currentProductService, translationService, winRef);
-  }
+  } */
 
 }

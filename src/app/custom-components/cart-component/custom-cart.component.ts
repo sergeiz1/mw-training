@@ -16,13 +16,13 @@ export class CustomCartComponent extends CartDetailsComponent {
 
   cart$ = this.activeCartService.getActive();
 
-  constructor(protected activeCartService: ActiveCartService,
+  /* constructor(protected activeCartService: ActiveCartService,
               protected selectiveCartService: SelectiveCartService,
               protected promotionService: PromotionService,
               protected authService: AuthService,
               protected routingService: RoutingService) {
     super(activeCartService, promotionService, selectiveCartService, authService, routingService);
-  }
+  } */
 
   changeQuantity(entry: OrderEntry, quantity: string): void {
       this.activeCartService.updateEntry(entry.entryNumber, +quantity);
