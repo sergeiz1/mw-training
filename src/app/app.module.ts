@@ -1,24 +1,38 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule, BrowserTransferStateModule} from '@angular/platform-browser';
 import {translationChunksConfig, translations} from '@spartacus/assets';
-import {B2cStorefrontModule, LayoutConfig, PAGE_LAYOUT_HANDLER, PageComponentModule} from '@spartacus/storefront';
+import {
+  B2cStorefrontModule,
+  JsonLdBuilderModule,
+  PAGE_LAYOUT_HANDLER,
+  PageComponentModule, SeoMetaService
+} from '@spartacus/storefront';
 import {AppComponent} from './app.component';
 import {CustomOutletsModule} from './custom-outlets/custom-outlets.module';
-import {ConfigModule, RoutingConfig} from '@spartacus/core';
+import {
+  ConfigModule,
+  PageMetaResolver,
+  RoutingConfig
+} from '@spartacus/core';
 import {CustomComponentsModule} from './custom-components/custom-components.module';
 import {MiniCartLayoutHandler} from './mini-cart-layout-handler';
 import {CommonModule} from "@angular/common";
+import {CustomSeoMetaService} from "./services/custom-seo-meta.service";
+import {CustomResolver} from "./resolvers/custom-resolver";
+import {LayoutModule} from "./configs/layout/layout.module";
+import {SessionModule} from "./configs/session/session.module";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
     B2cStorefrontModule.withConfig({
       backend: {
         occ: {
-          baseUrl: 'https://spartacus-training.eastus.cloudapp.azure.com:8443',
+          // baseUrl: 'https://spartacus-training.eastus.cloudapp.azure.com:8443',
+          baseUrl: 'https://localhost:9002',
           prefix: '/occ/v2/'
         }
       },
@@ -36,52 +50,17 @@ import {CommonModule} from "@angular/common";
         level: '3.0'
       },
     }),
-    ConfigModule.withConfig({
-      layoutSlots: {
-        ProductDetailsPageTemplate: {
-          slots: [
-            'Summary', 'UpSelling', 'CrossSelling', 'SiteLinks', 'PlaceholderContentSlot'
-          ]
-        },
-        SearchResultsListPageTemplate: {
-          slots: [
-            'Section2', 'ProductLeftRefinements', 'SearchResultsListSlot'
-          ],
-          lg: {
-            slots: [
-              'Section2', 'ProductLeftRefinements', 'SearchResultsListSlot'
-            ]
-          },
-          md: {
-            slots: [
-              'Section2', 'ProductLeftRefinements', 'SearchResultsListSlot'
-            ]
-          },
-          sm: {
-            slots: [
-              'ProductLeftRefinements', 'SearchResultsListSlot'
-            ]
-          },
-          xs: {
-            slots: [
-              'ProductLeftRefinements', 'SearchResultsListSlot'
-            ]
-          }
-        }
-      }
-    } as LayoutConfig),
+    SessionModule,
+    LayoutModule,
     ConfigModule.withConfig({
       routing: {
         routes: {
           product: {
             paths: [
-              'product/:manufacturer/:firstCategoryName/:productCode/:prettyName',
-              'product/:manufacturer/:productCode/:prettyName',
+              'product/:productCode/:name/:prettyName',
+              'product/:productCode/:prettyName',
               'product/:productCode/:name'
-            ],
-            paramsMapping: {
-              name: ''
-            }
+            ]
           }
         }
       }
@@ -90,13 +69,23 @@ import {CommonModule} from "@angular/common";
     CustomComponentsModule,
     PageComponentModule,
     CommonModule,
-    BrowserTransferStateModule
+    BrowserTransferStateModule,
+    JsonLdBuilderModule
   ],
   providers: [
     {
       provide: PAGE_LAYOUT_HANDLER,
       useExisting: MiniCartLayoutHandler,
       multi: true
+    },
+    {
+      provide: PageMetaResolver,
+      useClass: CustomResolver,
+      multi: true
+    },
+    {
+      provide: SeoMetaService,
+      useClass: CustomSeoMetaService
     }
   ],
   bootstrap: [AppComponent]
