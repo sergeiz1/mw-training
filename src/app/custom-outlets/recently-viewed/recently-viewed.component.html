@@ -1,0 +1,24 @@
+<ng-template cxOutletRef="Summary" cxOutletPos="after">
+  <div class="container">
+    <p>Recently viewed</p>
+    <cx-carousel
+      [items]="p$"
+      [title]="'Recently viewed products'"
+      [template]="carouselItem"
+    ></cx-carousel>
+  </div>
+
+  <!-- Define a template for each carousel slide  -->
+  <ng-template #carouselItem let-item="item">
+    <a tabindex="0" [routerLink]="{ cxRoute: 'product', params: item } | cxUrl">
+      <cx-media
+        *ngIf="item.images?.PRIMARY"
+        [container]="item.images.PRIMARY"
+        format="product"
+      >
+      </cx-media>
+      <h4>{{ item.name }}</h4>
+      <div class="price">{{ item.price?.formattedValue }}</div>
+    </a>
+  </ng-template>
+</ng-template>
