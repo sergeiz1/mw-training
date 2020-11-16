@@ -16,12 +16,12 @@ import {
 } from '@spartacus/core';
 import {CustomComponentsModule} from './custom-components/custom-components.module';
 import {MiniCartLayoutHandler} from './mini-cart-layout-handler';
-import {CommonModule} from "@angular/common";
-import {CustomSeoMetaService} from "./services/custom-seo-meta.service";
-import {CustomResolver} from "./resolvers/custom-resolver";
-import {LayoutModule} from "./configs/layout/layout.module";
-import {SessionModule} from "./configs/session/session.module";
-import {DebuggerModule} from "./debugger/debugger.module";
+import {CommonModule} from '@angular/common';
+import {CustomSeoMetaService} from './services/custom-seo-meta.service';
+import {CustomResolver} from './resolvers/custom-resolver';
+import {LayoutModule} from './configs/layout/layout.module';
+import {SessionModule} from './configs/session/session.module';
+import {DebuggerModule} from './debugger/debugger.module';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,8 @@ import {DebuggerModule} from "./debugger/debugger.module";
     B2cStorefrontModule.withConfig({
       backend: {
         occ: {
-          baseUrl: 'https://spartacus-training.eastus.cloudapp.azure.com:8443',
-          // baseUrl: 'https://localhost:9002',
+          // baseUrl: 'https://spartacus-training.eastus.cloudapp.azure.com:8443',
+          baseUrl: 'https://localhost:9002',
           prefix: '/occ/v2/'
         }
       },

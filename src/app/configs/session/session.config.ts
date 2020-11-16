@@ -4,5 +4,5 @@ export abstract class SessionConfig {
       enabled: boolean,
       timeout: number
     }
-  }
+  };
 }

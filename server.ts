@@ -12,11 +12,12 @@ import { join } from 'path';
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
+import * as core from 'express-serve-static-core';
 
 const ngExpressEngine = NgExpressEngineDecorator.get(engine);
 
 // The Express app is exported so that it can be used by serverless Functions.
-export function app() {
+export function app(): core.Express {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/mystore/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html'))
@@ -52,7 +53,7 @@ export function app() {
   return server;
 }
 
-function run() {
+function run(): void {
   const port = process.env.PORT || 4000;
 
   // Start up the Node server

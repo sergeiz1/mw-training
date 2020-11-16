@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import {CurrentProductService, ProductSummaryComponent} from '@spartacus/storefront';
-import {map, switchMap} from "rxjs/operators";
-import {ActiveCartService} from "@spartacus/core";
+import {map, switchMap} from 'rxjs/operators';
+import {ActiveCartService} from '@spartacus/core';
 
 @Component({
   selector: 'app-pdp',

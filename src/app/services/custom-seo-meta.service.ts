@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {SeoMetaService} from "@spartacus/storefront";
-import {PageMetaService} from "@spartacus/core";
-import {Meta, Title} from "@angular/platform-browser";
+import {SeoMetaService} from '@spartacus/storefront';
+import {PageMetaService} from '@spartacus/core';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,6 @@ export class CustomSeoMetaService extends SeoMetaService {
               protected pageMetaService: PageMetaService) {
     super(ngTitle, ngMeta, pageMetaService);
     this.addTag({name: 'twitter:title', content: 'twitter'});
-    this.addTag({name: 'twitter:image', content: 'summary'})
+    this.addTag({name: 'twitter:image', content: 'summary'});
   }
 }

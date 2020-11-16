@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {Product, ProductSearchPage, ProductSearchService, SearchConfig} from "@spartacus/core";
-import {CurrentProductService} from "@spartacus/storefront";
-import {Observable, of} from "rxjs";
-import {filter, map} from "rxjs/operators";
+import {Product, ProductSearchPage, ProductSearchService, SearchConfig} from '@spartacus/core';
+import {CurrentProductService} from '@spartacus/storefront';
+import {Observable, of} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-upselling',
@@ -18,7 +18,7 @@ export class ProductUpsellingComponent implements OnInit {
   products$: Observable<Observable<Product>[]> = this.productSearchService.getResults().pipe(
     filter(result => !!result && result.hasOwnProperty('products')),
     map((result: ProductSearchPage) => result.products),
-    map((products: Product[]) => products.map(products => of(products))), // products array of products observable
+    map((products: Product[]) => products.map(_ => of(products))), // products array of products observable
   );
 
   constructor(
@@ -28,11 +28,11 @@ export class ProductUpsellingComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentProductService.getProduct().pipe(
-      filter(product =>!!product && product.hasOwnProperty('name')),
+      filter(product => !!product && product.hasOwnProperty('name')),
       map(product => product.name)
     ).subscribe(productName => {
-        this.productSearchService.search(productName, { pageSize: 20} as SearchConfig)
-    })
+        this.productSearchService.search(productName, { pageSize: 20} as SearchConfig);
+    });
   }
 
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ActiveCartService, Order, RoutingService, UserOrderService} from "@spartacus/core";
-import {take} from "rxjs/operators";
+import { Component } from '@angular/core';
+import {ActiveCartService, Order, RoutingService, UserOrderService} from '@spartacus/core';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-reorder',
@@ -20,13 +20,13 @@ export class ReorderComponent {
       take(1)
     ).subscribe(order => {
       this.addToCart(order);
-      this.routingService.go({cxRoute: 'checkout'})
+      this.routingService.go({cxRoute: 'checkout'});
     });
   }
 
   private addToCart(order: Order): void {
     order.entries.forEach(entry => {
-      this.activeCartService.addEntry(entry.product.code, entry.quantity)
+      this.activeCartService.addEntry(entry.product.code, entry.quantity);
     });
   }
 

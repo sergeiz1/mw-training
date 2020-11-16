@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import {CurrentProductService} from "@spartacus/storefront";
-import {Observable} from "rxjs";
-import {filter, switchMap} from "rxjs/operators";
-import {PicsumAdapter} from "./picsum-adapter";
-import {PicsumImage} from "./picsum-image";
+import {CurrentProductService} from '@spartacus/storefront';
+import {Observable} from 'rxjs';
+import {filter, switchMap} from 'rxjs/operators';
+import {PicsumAdapter} from './picsum-adapter';
+import {PicsumImage} from './picsum-image';
 
 @Component({
   selector: 'app-third-party-api',

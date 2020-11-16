@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DebugConfig, DebugConfigType} from "./debug-config";
+import {DebugConfig, DebugConfigType} from './debug-config';
 
 @Component({
   selector: 'app-debugger',
