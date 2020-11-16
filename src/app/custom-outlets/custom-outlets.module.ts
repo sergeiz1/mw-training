@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import {CarouselModule, OutletRefModule} from '@spartacus/storefront';
+import {OutletRefModule} from '@spartacus/storefront';
 import { CustomOutletsComponent } from './custom-outlets.component';
 import {Covid19Module} from './covid19/covid19.module';
 import {SiteLogoModule} from './site-logo/site-logo.module';
@@ -11,7 +11,7 @@ import {RecentlyBoughtModule} from './recently-bought/recently-bought.module';
 import {RecentlyViewedModule} from "./recently-viewed/recently-viewed.module";
 import {ProductUpsellingModule} from "./product-upselling/product-upselling.module";
 import { ReorderComponent } from './reorder/reorder.component';
-import {ThirdPartyApiModule} from "../third-party-api/third-party-api.module";
+import {ThirdPartyApiModule} from "./third-party-api/third-party-api.module";
 
 @NgModule({
   declarations: [CustomOutletsComponent, ReorderComponent],

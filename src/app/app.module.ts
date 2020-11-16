@@ -21,6 +21,7 @@ import {CustomSeoMetaService} from "./services/custom-seo-meta.service";
 import {CustomResolver} from "./resolvers/custom-resolver";
 import {LayoutModule} from "./configs/layout/layout.module";
 import {SessionModule} from "./configs/session/session.module";
+import {DebuggerModule} from "./debugger/debugger.module";
 
 @NgModule({
   declarations: [
@@ -31,8 +32,8 @@ import {SessionModule} from "./configs/session/session.module";
     B2cStorefrontModule.withConfig({
       backend: {
         occ: {
-          // baseUrl: 'https://spartacus-training.eastus.cloudapp.azure.com:8443',
-          baseUrl: 'https://localhost:9002',
+          baseUrl: 'https://spartacus-training.eastus.cloudapp.azure.com:8443',
+          // baseUrl: 'https://localhost:9002',
           prefix: '/occ/v2/'
         }
       },
@@ -69,6 +70,7 @@ import {SessionModule} from "./configs/session/session.module";
     CustomComponentsModule,
     PageComponentModule,
     CommonModule,
+    DebuggerModule,
     BrowserTransferStateModule,
     JsonLdBuilderModule
   ],
