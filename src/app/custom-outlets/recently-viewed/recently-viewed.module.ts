@@ -1,10 +1,10 @@
 import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RecentlyViewedComponent} from './recently-viewed.component';
-import {CarouselModule, MediaModule, OutletRefModule} from "@spartacus/storefront";
-import {RouterModule} from "@angular/router";
-import {RoutingModule, UrlModule} from "@spartacus/core";
-import {RecentlyViewedService} from "../../services/recently-viewed.service";
+import {CarouselModule, MediaModule, OutletRefModule} from '@spartacus/storefront';
+import {RouterModule} from '@angular/router';
+import {RoutingModule, UrlModule} from '@spartacus/core';
+import {RecentlyViewedService} from '../../services/recently-viewed.service';
 
 
 @NgModule({

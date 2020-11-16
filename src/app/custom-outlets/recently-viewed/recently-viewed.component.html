@@ -1,9 +1,8 @@
-<ng-template cxOutletRef="Summary" cxOutletPos="after">
+<ng-template cxOutletRef="UpSelling" cxOutletPos="before">
   <div class="container">
-    <p>Recently viewed</p>
     <cx-carousel
-      [items]="p$"
-      [title]="'Recently viewed products'"
+      [items]="recentlyViewedProducts$"
+      [title]="title"
       [template]="carouselItem"
     ></cx-carousel>
   </div>
