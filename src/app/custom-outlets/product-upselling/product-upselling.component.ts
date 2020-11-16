@@ -18,7 +18,7 @@ export class ProductUpsellingComponent implements OnInit {
   products$: Observable<Observable<Product>[]> = this.productSearchService.getResults().pipe(
     filter(result => !!result && result.hasOwnProperty('products')),
     map((result: ProductSearchPage) => result.products),
-    map((products: Product[]) => products.map(_ => of(products))), // products array of products observable
+    map((products: Product[]) => products.map(product => of(product))), // products array of products observable
   );
 
   constructor(
