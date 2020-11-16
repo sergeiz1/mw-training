@@ -1,0 +1,8 @@
+<ng-template cxOutletRef="Summary" cxOutletPos="after">
+  <div *ngIf="picsumImage$ | async as image">
+    <a [href]="image.url" target="_blank">
+      <img [src]="image.download_url" />
+    </a>
+  </div>
+</ng-template>
+

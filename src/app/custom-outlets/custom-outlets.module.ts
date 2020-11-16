@@ -10,21 +10,24 @@ import {CurrentCartItemsModule} from './current-cart-items/current-cart-items.mo
 import {RecentlyBoughtModule} from './recently-bought/recently-bought.module';
 import {RecentlyViewedModule} from "./recently-viewed/recently-viewed.module";
 import {ProductUpsellingModule} from "./product-upselling/product-upselling.module";
+import { ReorderComponent } from './reorder/reorder.component';
+import {ThirdPartyApiModule} from "../third-party-api/third-party-api.module";
 
 @NgModule({
-  declarations: [CustomOutletsComponent],
-  imports: [
-    CommonModule,
-    OutletRefModule,
-    Covid19Module,
-    SiteLogoModule,
-    PdpAvailabilityModule,
-    MainBannerModule,
-    CurrentCartItemsModule,
-    ProductUpsellingModule,
-    RecentlyViewedModule,
-    RecentlyBoughtModule
-  ],
+  declarations: [CustomOutletsComponent, ReorderComponent],
+    imports: [
+        CommonModule,
+        OutletRefModule,
+        Covid19Module,
+        SiteLogoModule,
+        PdpAvailabilityModule,
+        MainBannerModule,
+        CurrentCartItemsModule,
+        ProductUpsellingModule,
+        RecentlyViewedModule,
+        RecentlyBoughtModule,
+        ThirdPartyApiModule
+    ],
   exports: [CustomOutletsComponent]
 })
 export class CustomOutletsModule { }
